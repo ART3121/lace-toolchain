@@ -1,0 +1,92 @@
+name: Bundle do Windows
+
+# Monta, testa e (com uma tag) publica o bundle de Windows do Lace. Cada
+# push e pull request passa pelos quatro fluxos do smoke; a publicação é
+# manual: Actions → "Bundle do Windows" → Run workflow, com a tag ucrt64-vN.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag da release (ucrt64-vN). Vazio: só monta e testa."
+        required: false
+        default: ""
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    env:
+      PYTHONUTF8: "1"
+      # O assemble.py procura os pacotes primeiro na release pkgs-<id> deste
+      # repositório, e no MSYS2 se ela ainda não existe.
+      LACE_TOOLCHAIN_REPO: ${{ github.repository }}
+      TAG: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@v5
+
+      # O Python que roda os scripts (não é o do bundle): o 3.14 lê zstd.
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Cache dos pacotes
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache/pkgs
+            .cache/pypi
+          key: pkgs-${{ hashFiles('packages.lock.json') }}
+
+      - name: Montar
+        run: python scripts/assemble.py dist/msys
+
+      - name: Compilar o cocotb
+        run: python scripts/cocotb.py dist/msys
+
+      - name: Enxugar
+        run: python scripts/trim.py dist/msys
+
+      - name: Smoke (os quatro fluxos)
+        run: python scripts/smoke.py dist/msys
+
+      - name: Empacotar
+        shell: bash
+        run: python scripts/package.py dist/msys --tag "${TAG:-dev}"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lace-msys
+          path: |
+            dist/lace-msys-*
+            dist/SHA256SUMS
+
+      - name: Guardar os pacotes do lock
+        if: inputs.tag != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          id="$(python scripts/mirror.py dist/pkgs)"
+          # --latest=false: a "última release" do repositório, que o lace
+          # update consulta, continua sendo a do bundle.
+          if ! gh release view "pkgs-$id" >/dev/null 2>&1; then
+            gh release create "pkgs-$id" dist/pkgs/* --latest=false \
+              --title "Pacotes do lock $id" \
+              --notes "Os pacotes do MSYS2 que o packages.lock.json $id lista, para o bundle não depender de o MSYS2 ainda tê-los."
+          fi
+
+      - name: Publicar
+        if: inputs.tag != ''
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$TAG" \
+            "dist/lace-msys-$TAG.zip" "dist/lace-msys-$TAG.json" dist/SHA256SUMS \
+            --title "Bundle do Windows $TAG" \
+            --notes "Montado de packages.lock.json e testado nos quatro fluxos (Icarus, Verilator, cocotb com Icarus, cocotb com Verilator). Versões em lace-msys-$TAG.json."

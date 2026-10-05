@@ -1,0 +1,59 @@
+# O que o bundle de Windows do Lace pede. As dependências, o scripts/lock.py
+# resolve e grava, com versão e SHA-256, em packages.lock.json: o build usa só
+# o lock, nunca o repositório do dia.
+#
+# Uma entrada por linha:
+#   ucrt64 <pacote> [versão]        programa nativo de Windows, do ambiente UCRT64
+#                                   (sem o prefixo mingw-w64-ucrt-x86_64-)
+#   msys   <pacote> [versão]        a camada POSIX (usr/bin), do repositório MSYS
+#   ignore <ucrt64|msys> <pacote>   dependência declarada que o bundle não leva
+#   pypi   <pacote> <versão>        pacote do PyPI; a versão é obrigatória
+#
+# Sem versão, entra a que o repositório tiver quando o lock for gerado, e ela
+# fica no lock até alguém gerá-lo de novo. Com versão, ela fica travada mesmo
+# quando o lock é refeito: diga ao lado por quê.
+
+# Simuladores. O cocotb compila a VPI de cada um contra a versão daqui.
+ucrt64 iverilog
+ucrt64 verilator
+
+# O script verilator roda pelo Perl. O pacote declara o perl da camada MSYS;
+# o bundle leva o do UCRT64, nativo, que a AURORA já usa.
+ucrt64 perl
+ignore msys perl
+
+# O compilador que o Verilator usa na máquina do usuário para compilar o modelo.
+ucrt64 gcc
+
+# O Python do cocotb, que também roda o testbench.
+ucrt64 python
+# Tkinter: nenhum fluxo usa interface gráfica do Python.
+ignore ucrt64 tk
+ignore ucrt64 tcl
+
+# O make e o sh do verilated.mk, que também chama uname, cat, rm, mkdir,
+# basename (coreutils) e xargs (findutils). O make do UCRT64 se chama
+# mingw32-make.exe; o cocotb chama "make".
+msys make
+msys bash
+msys coreutils
+msys findutils
+msys msys2-runtime
+
+# cocotb, compilado do fonte no CI (scripts/cocotb.py): o pacote do PyPI para
+# Windows não traz a VPI do Verilator.
+pypi cocotb 2.1.0
+# O que o cocotb 2.1.0 pede para rodar (find_libpython, pytest>=6) e o que o
+# pytest pede no Windows (colorama, iniconfig, packaging, pluggy, pygments).
+pypi find_libpython 0.5.1
+pypi pytest 9.1.1
+pypi colorama 0.4.6
+pypi iniconfig 2.3.0
+pypi packaging 26.3
+pypi pluggy 1.6.0
+pypi pygments 2.21.0
+# O que o pyproject.toml do cocotb 2.1.0 pede para compilar
+# (setuptools>=77,<84, wheel, setuptools-git-versioning>=3,<4, e packaging).
+pypi setuptools 83.0.0
+pypi wheel 0.48.0
+pypi setuptools-git-versioning 3.1.0

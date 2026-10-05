@@ -1,0 +1,921 @@
+{
+  "_doc": [
+    "Gerado por scripts/lock.py a partir de packages.txt. Não edite à mão.",
+    "msys2: cada pacote do bundle, com as dependências já resolvidas (depends).",
+    "pypi: o fonte do cocotb e os wheels que o build dele usa."
+  ],
+  "msys2": [
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-binutils",
+      "version": "2.47-3",
+      "file": "mingw-w64-ucrt-x86_64-binutils-2.47-3-any.pkg.tar.zst",
+      "sha256": "ba98af202fe71e0884bb51daf78ce10bd8a51c69528c700dcf5855e6ece06dd3",
+      "size": 6639046,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-gettext-runtime",
+        "mingw-w64-ucrt-x86_64-libwinpthread",
+        "mingw-w64-ucrt-x86_64-zlib",
+        "mingw-w64-ucrt-x86_64-zstd"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-3.0-or-later AND LGPL-2.0-or-later"
+      ],
+      "base": "mingw-w64-binutils"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-bzip2",
+      "version": "1.0.8-4",
+      "file": "mingw-w64-ucrt-x86_64-bzip2-1.0.8-4-any.pkg.tar.zst",
+      "sha256": "f03a2174034ddd2d96cecd34f617c5f8e2ef86c812b8d2bb3b8875257f2c8bfa",
+      "size": 94396,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "custom"
+      ],
+      "base": "mingw-w64-bzip2"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-cc-libs",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-cc-libs-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "b05218ea8b8f2142d2042cd01843810f4cf9345af6e5e7fe39395590cd55b2dc",
+      "size": 2377,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libatomic",
+        "mingw-w64-ucrt-x86_64-libgcc",
+        "mingw-w64-ucrt-x86_64-libquadmath",
+        "mingw-w64-ucrt-x86_64-libstdc++"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-crt",
+      "version": "14.0.0.r426.g4564ee4b5-1",
+      "file": "mingw-w64-ucrt-x86_64-crt-14.0.0.r426.g4564ee4b5-1-any.pkg.tar.zst",
+      "sha256": "5d1c1f2c3859e690181d9ebcada1640a6744ab8dd5643b4bdbc7fe258af95037",
+      "size": 4065694,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-headers"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:ZPL-2.1"
+      ],
+      "base": "mingw-w64-crt"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-expat",
+      "version": "2.8.5-1",
+      "file": "mingw-w64-ucrt-x86_64-expat-2.8.5-1-any.pkg.tar.zst",
+      "sha256": "f47c7e78d4664c5cce7b26605f3c2dfcfad4a8ed2e9445c952f8f8863d5e7eb9",
+      "size": 195706,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:MIT"
+      ],
+      "base": "mingw-w64-expat"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-gcc",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-gcc-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "dfde2ee85df123a4afc43ac7bf8d4c379ddb919010c4b79a17db0862e030b2d1",
+      "size": 48531195,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-binutils",
+        "mingw-w64-ucrt-x86_64-crt",
+        "mingw-w64-ucrt-x86_64-gmp",
+        "mingw-w64-ucrt-x86_64-headers",
+        "mingw-w64-ucrt-x86_64-isl",
+        "mingw-w64-ucrt-x86_64-libgcc",
+        "mingw-w64-ucrt-x86_64-libstdc++",
+        "mingw-w64-ucrt-x86_64-mpc",
+        "mingw-w64-ucrt-x86_64-mpfr",
+        "mingw-w64-ucrt-x86_64-windows-default-manifest",
+        "mingw-w64-ucrt-x86_64-winpthreads",
+        "mingw-w64-ucrt-x86_64-zlib",
+        "mingw-w64-ucrt-x86_64-zstd"
+      ],
+      "requested": true,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-gcc-libs",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-gcc-libs-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "e82d3a60a8d227632d1ddf713cb2c426cf2cb7f9ba19e6cc8f6ca99ede0547b6",
+      "size": 2351,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs",
+        "mingw-w64-ucrt-x86_64-libgomp"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-gettext-runtime",
+      "version": "1.0-1",
+      "file": "mingw-w64-ucrt-x86_64-gettext-runtime-1.0-1-any.pkg.tar.zst",
+      "sha256": "ba693dda4ac375af76ce481ff3a6e7481286546cc7dc6d56c7021dae34084157",
+      "size": 417977,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs",
+        "mingw-w64-ucrt-x86_64-libiconv"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later AND LGPL-2.1-or-later"
+      ],
+      "base": "mingw-w64-gettext"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-gmp",
+      "version": "6.3.0-2",
+      "file": "mingw-w64-ucrt-x86_64-gmp-6.3.0-2-any.pkg.tar.zst",
+      "sha256": "e82a75968a556484a50084578238a84eb60fb93e34986fd6695c537975bd39ea",
+      "size": 592359,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "LGPL3",
+        "GPL"
+      ],
+      "base": "mingw-w64-gmp"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-headers",
+      "version": "14.0.0.r426.g4564ee4b5-1",
+      "file": "mingw-w64-ucrt-x86_64-headers-14.0.0.r426.g4564ee4b5-1-any.pkg.tar.zst",
+      "sha256": "b81c19e278ba0fc9f6ad0326d4aef64aea93053a6272916fb4c07069ac0215d0",
+      "size": 6890648,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:ZPL-2.1 AND LGPL-2.1-or-later"
+      ],
+      "base": "mingw-w64-headers"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-isl",
+      "version": "0.28-1",
+      "file": "mingw-w64-ucrt-x86_64-isl-0.28-1-any.pkg.tar.zst",
+      "sha256": "8594e01a253d5a72646c586cf5a1626c1b1c2be7c30060fe67abd9bebe3fe223",
+      "size": 1540719,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-gmp"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:MIT"
+      ],
+      "base": "mingw-w64-isl"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-iverilog",
+      "version": "1~13.0-2",
+      "file": "mingw-w64-ucrt-x86_64-iverilog-1~13.0-2-any.pkg.tar.zst",
+      "sha256": "fd4d7d7cb60cda1eb437f5476673503d92964cf47ce6c11b460eb3bd05c43582",
+      "size": 1988347,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-bzip2",
+        "mingw-w64-ucrt-x86_64-readline",
+        "mingw-w64-ucrt-x86_64-zlib"
+      ],
+      "requested": true,
+      "license": [
+        "spdx:GPL-2.0-or-later"
+      ],
+      "base": "mingw-w64-iverilog"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libatomic",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-libatomic-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "81d960422f47c9cff742aa5a6dd6c587ba39e5da64738d903730e79577479582",
+      "size": 25427,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libwinpthread"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libb2",
+      "version": "0.98.1-3",
+      "file": "mingw-w64-ucrt-x86_64-libb2-0.98.1-3-any.pkg.tar.zst",
+      "sha256": "dfb554635119d3c46adb00c9d0c589bb38d1cb0781b10ecf31de07ce388bd0c0",
+      "size": 24592,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs"
+      ],
+      "requested": false,
+      "license": [
+        "custom:CC0"
+      ],
+      "base": "mingw-w64-libb2"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libffi",
+      "version": "3.8.0-1",
+      "file": "mingw-w64-ucrt-x86_64-libffi-3.8.0-1-any.pkg.tar.zst",
+      "sha256": "99ad12f4ecfa00a889ef9c5c0188592368a5bac109d0c508ce4e04f29ea95a76",
+      "size": 51576,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:MIT"
+      ],
+      "base": "mingw-w64-libffi"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libgcc",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-libgcc-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "de65b4adae899d9278427402e29d03860bacba481794460f3a1d078610cbb783",
+      "size": 77220,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libwinpthread"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libgomp",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-libgomp-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "f34d39ab72a0a202dc18504db82aee4ab2a7cec9bc5c10daffdb9c22d87a1f90",
+      "size": 311240,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libwinpthread"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libiconv",
+      "version": "1.19-1",
+      "file": "mingw-w64-ucrt-x86_64-libiconv-1.19-1-any.pkg.tar.zst",
+      "sha256": "9a500f38c2b91808741c62fae746b3e9110b33a1ecf5c30fa0c66dbedddf7e16",
+      "size": 744750,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:LGPL-2.1-or-later",
+        "documentation:spdx:GPL-3.0-or-later"
+      ],
+      "base": "mingw-w64-libiconv"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libquadmath",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-libquadmath-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "75960aa837a7fc6dc8313afb11014bf7f42548ab6067498d0b561cc3c490b5b2",
+      "size": 179389,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libgcc"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:LGPL-2.1-or-later AND GFDL-1.2-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libstdc++",
+      "version": "16.2.0-4",
+      "file": "mingw-w64-ucrt-x86_64-libstdc++-16.2.0-4-any.pkg.tar.zst",
+      "sha256": "2211dbbf1220287e49f5d66bb6cb09ee5a157901a485197553c9a940cc902d5b",
+      "size": 795771,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libgcc",
+        "mingw-w64-ucrt-x86_64-libwinpthread",
+        "mingw-w64-ucrt-x86_64-tzdata"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later WITH GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "mingw-w64-gcc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libsystre",
+      "version": "1.0.2-3",
+      "file": "mingw-w64-ucrt-x86_64-libsystre-1.0.2-3-any.pkg.tar.zst",
+      "sha256": "62f564b1395d4862db1599b77f6588c32de5c80936845751cf369b31eee1560b",
+      "size": 8603,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-libtre"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:BSD-2-Clause"
+      ],
+      "base": "mingw-w64-libsystre"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libtre",
+      "version": "0.9.0-2",
+      "file": "mingw-w64-ucrt-x86_64-libtre-0.9.0-2-any.pkg.tar.zst",
+      "sha256": "d50f22545c50d7c0cd584474bba83f0c7a2cd8aab1aed1ad6c1f9c6452f3c4fc",
+      "size": 82227,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-gettext-runtime"
+      ],
+      "requested": false,
+      "license": [
+        "BSD"
+      ],
+      "base": "mingw-w64-libtre"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-libwinpthread",
+      "version": "14.0.0.r426.g4564ee4b5-1",
+      "file": "mingw-w64-ucrt-x86_64-libwinpthread-14.0.0.r426.g4564ee4b5-1-any.pkg.tar.zst",
+      "sha256": "f8de8153bbc0e47ba244a423c12c426fa1d9f56395117ecaa34c6ad6ebed6ca3",
+      "size": 30667,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:MIT AND BSD-3-Clause-Clear"
+      ],
+      "base": "mingw-w64-winpthreads"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-mpc",
+      "version": "1.4.1-1",
+      "file": "mingw-w64-ucrt-x86_64-mpc-1.4.1-1-any.pkg.tar.zst",
+      "sha256": "f06556e811c711ce91609484e31d358e4f495811ba29813bf2284a3b236d82ce",
+      "size": 139585,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-gmp",
+        "mingw-w64-ucrt-x86_64-mpfr"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:LGPL-3.0-or-later"
+      ],
+      "base": "mingw-w64-mpc"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-mpdecimal",
+      "version": "4.0.1-3",
+      "file": "mingw-w64-ucrt-x86_64-mpdecimal-4.0.1-3-any.pkg.tar.zst",
+      "sha256": "abf25c3869ba5e5bc3b69fdeb6cd49b060fc1a64d0d2de10918adeae9630a68d",
+      "size": 158639,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:BSD-2-Clause"
+      ],
+      "base": "mingw-w64-mpdecimal"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-mpfr",
+      "version": "4.2.2-3",
+      "file": "mingw-w64-ucrt-x86_64-mpfr-4.2.2-3-any.pkg.tar.zst",
+      "sha256": "6b70a275d2ec75c70aa50a236c218e6b7ee9a5ab4c6d52cb0b580267b7d200fe",
+      "size": 553765,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs",
+        "mingw-w64-ucrt-x86_64-gmp"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:LGPL-3.0-or-later"
+      ],
+      "base": "mingw-w64-mpfr"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-ncurses",
+      "version": "6.6-4",
+      "file": "mingw-w64-ucrt-x86_64-ncurses-6.6-4-any.pkg.tar.zst",
+      "sha256": "88331fe78470ef2c5e0280652fee5e10b6dcaa35f8037725c359407f2702309c",
+      "size": 1605818,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs",
+        "mingw-w64-ucrt-x86_64-libsystre",
+        "mingw-w64-ucrt-x86_64-pcre2"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:MIT"
+      ],
+      "base": "mingw-w64-ncurses"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-openssl",
+      "version": "3.6.5-1",
+      "file": "mingw-w64-ucrt-x86_64-openssl-3.6.5-1-any.pkg.tar.zst",
+      "sha256": "773e021ebad83f14b5c103db467411e8ff064663e1c7e7f730e2be72f4117064",
+      "size": 8297898,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:Apache-2.0"
+      ],
+      "base": "mingw-w64-openssl"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-pcre2",
+      "version": "10.49-1",
+      "file": "mingw-w64-ucrt-x86_64-pcre2-10.49-1-any.pkg.tar.zst",
+      "sha256": "63172179db724ac71e2439a7981134c1bcab8049bdddfd349b32b8f76ed52d1e",
+      "size": 1445467,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-bzip2",
+        "mingw-w64-ucrt-x86_64-wineditline",
+        "mingw-w64-ucrt-x86_64-zlib"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:BSD-3-Clause"
+      ],
+      "base": "mingw-w64-pcre2"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-perl",
+      "version": "5.44.0-3",
+      "file": "mingw-w64-ucrt-x86_64-perl-5.44.0-3-any.pkg.tar.zst",
+      "sha256": "85d346c0c942d6232df0b32c5d86bb61ed017aba5614d7a9d7ca37f574701bcb",
+      "size": 7340538,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs"
+      ],
+      "requested": true,
+      "license": [
+        "spdx:Artistic-1.0-Perl OR GPL-1.0-or-later"
+      ],
+      "base": "mingw-w64-perl"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-python",
+      "version": "3.14.8-1",
+      "file": "mingw-w64-ucrt-x86_64-python-3.14.8-1-any.pkg.tar.zst",
+      "sha256": "d6542336430039a7cb75f107b713332887665a26a0c9c51e82d8d772c7770b5e",
+      "size": 27765405,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-bzip2",
+        "mingw-w64-ucrt-x86_64-cc-libs",
+        "mingw-w64-ucrt-x86_64-expat",
+        "mingw-w64-ucrt-x86_64-libb2",
+        "mingw-w64-ucrt-x86_64-libffi",
+        "mingw-w64-ucrt-x86_64-mpdecimal",
+        "mingw-w64-ucrt-x86_64-ncurses",
+        "mingw-w64-ucrt-x86_64-openssl",
+        "mingw-w64-ucrt-x86_64-sqlite3",
+        "mingw-w64-ucrt-x86_64-tzdata",
+        "mingw-w64-ucrt-x86_64-xz",
+        "mingw-w64-ucrt-x86_64-zlib"
+      ],
+      "requested": true,
+      "license": [
+        "spdx:PSF-2.0"
+      ],
+      "base": "mingw-w64-python"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-readline",
+      "version": "8.3.003-1",
+      "file": "mingw-w64-ucrt-x86_64-readline-8.3.003-1-any.pkg.tar.zst",
+      "sha256": "de2423c2e10fcd88272a0ab2f833f6a082cfe613d4c17c2f548cc50a5d2190c4",
+      "size": 513820,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs",
+        "mingw-w64-ucrt-x86_64-termcap"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later"
+      ],
+      "base": "mingw-w64-readline"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-sqlite3",
+      "version": "3.53.4-1",
+      "file": "mingw-w64-ucrt-x86_64-sqlite3-3.53.4-1-any.pkg.tar.zst",
+      "sha256": "a8f904acb136634b4f708e8a0f9f301f76a3c42eea387a51300af961d0066051",
+      "size": 2470500,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-zlib"
+      ],
+      "requested": false,
+      "license": [
+        "PublicDomain"
+      ],
+      "base": "mingw-w64-sqlite3"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-termcap",
+      "version": "1.3.1-7",
+      "file": "mingw-w64-ucrt-x86_64-termcap-1.3.1-7-any.pkg.tar.zst",
+      "sha256": "17b78eb63e89458a6ae4d56aa1dc357e1decb2f845b29fded79bccdd628d9d41",
+      "size": 27912,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-gcc-libs"
+      ],
+      "requested": false,
+      "license": [
+        "GPL",
+        "LGPL"
+      ],
+      "base": "mingw-w64-termcap"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-tzdata",
+      "version": "2026e-1",
+      "file": "mingw-w64-ucrt-x86_64-tzdata-2026e-1-any.pkg.tar.zst",
+      "sha256": "f1809089f8ed5cec858ae8584289172896eb921be1e78ba583555f74e9015428",
+      "size": 225916,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "custom: public domain"
+      ],
+      "base": "mingw-w64-tzdata"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-verilator",
+      "version": "5.050-1",
+      "file": "mingw-w64-ucrt-x86_64-verilator-5.050-1-any.pkg.tar.zst",
+      "sha256": "a3adb510e9a5298c0ff563af570a4411ea11fd19f7ecb12c8780c561ff462c86",
+      "size": 7430910,
+      "depends": [],
+      "requested": true,
+      "license": [
+        "spdx:LGPL-3.0-only OR Artistic-2.0"
+      ],
+      "base": "mingw-w64-verilator"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-windows-default-manifest",
+      "version": "20260815-1",
+      "file": "mingw-w64-ucrt-x86_64-windows-default-manifest-20260815-1-any.pkg.tar.zst",
+      "sha256": "b39039f754a600cc0dec49df7d675a59a3cb2b63691d91b4ae60735ee7075eca",
+      "size": 2652,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "custom:Public Domain"
+      ],
+      "base": "mingw-w64-windows-default-manifest"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-wineditline",
+      "version": "2.208-1",
+      "file": "mingw-w64-ucrt-x86_64-wineditline-2.208-1-any.pkg.tar.zst",
+      "sha256": "b07b34de1669e16cfd6743691914f5a66ad4013500bbf0e4c7a7644046ae7b1c",
+      "size": 61123,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:BSD-3-Clause"
+      ],
+      "base": "mingw-w64-wineditline"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-winpthreads",
+      "version": "14.0.0.r426.g4564ee4b5-1",
+      "file": "mingw-w64-ucrt-x86_64-winpthreads-14.0.0.r426.g4564ee4b5-1-any.pkg.tar.zst",
+      "sha256": "c24b627938c592666c7c2f73cc83be29c552f935f6c6cc25b86b20959629bfee",
+      "size": 45661,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-crt",
+        "mingw-w64-ucrt-x86_64-libwinpthread"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:MIT AND BSD-3-Clause-Clear"
+      ],
+      "base": "mingw-w64-winpthreads"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-xz",
+      "version": "5.8.4-1",
+      "file": "mingw-w64-ucrt-x86_64-xz-5.8.4-1-any.pkg.tar.zst",
+      "sha256": "a9d771f816d8c0c5bde152ffb27a687ede91079b8e77e5b8297efa3b5a835934",
+      "size": 905211,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-gettext-runtime"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:0BSD AND LGPL-2.1-or-later AND GPL-2.0-or-later"
+      ],
+      "base": "mingw-w64-xz"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-zlib",
+      "version": "1.3.2-2",
+      "file": "mingw-w64-ucrt-x86_64-zlib-1.3.2-2-any.pkg.tar.zst",
+      "sha256": "841401182976d2f9e17e5c0ebaac51f2a8014140ea53d67625e91c8fb3c85ea0",
+      "size": 111475,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:Zlib"
+      ],
+      "base": "mingw-w64-zlib"
+    },
+    {
+      "repo": "ucrt64",
+      "name": "mingw-w64-ucrt-x86_64-zstd",
+      "version": "1.5.7-2",
+      "file": "mingw-w64-ucrt-x86_64-zstd-1.5.7-2-any.pkg.tar.zst",
+      "sha256": "dbdb8427280046a2b41697780aa4c52983b708082b0da4755951dc3bea96ca89",
+      "size": 668277,
+      "depends": [
+        "mingw-w64-ucrt-x86_64-cc-libs"
+      ],
+      "requested": false,
+      "license": [
+        "spdx:BSD-3-Clause OR GPL-2.0-or-later"
+      ],
+      "base": "mingw-w64-zstd"
+    },
+    {
+      "repo": "msys",
+      "name": "bash",
+      "version": "5.3.020-1",
+      "file": "bash-5.3.020-1-x86_64.pkg.tar.zst",
+      "sha256": "dd601817a00a48024a58ed087e1aec786301d929f3d373ec5c1861dd76fe3029",
+      "size": 2579751,
+      "depends": [],
+      "requested": true,
+      "license": [
+        "spdx:GPL-3.0-or-later"
+      ],
+      "base": "bash"
+    },
+    {
+      "repo": "msys",
+      "name": "coreutils",
+      "version": "8.32-5",
+      "file": "coreutils-8.32-5-x86_64.pkg.tar.zst",
+      "sha256": "62dfee1c39fd15f99c39802b35e82643bc14fffc16d6c76d4001caa385ec77e3",
+      "size": 2755209,
+      "depends": [
+        "gmp",
+        "libiconv",
+        "libintl"
+      ],
+      "requested": true,
+      "license": [
+        "GPL3"
+      ],
+      "base": "coreutils"
+    },
+    {
+      "repo": "msys",
+      "name": "findutils",
+      "version": "4.11.0-2",
+      "file": "findutils-4.11.0-2-x86_64.pkg.tar.zst",
+      "sha256": "f19d3c6b1b073d4c5759ae83f5639d11a5f0227b772f7d86d600db573d9d5d32",
+      "size": 582781,
+      "depends": [
+        "libiconv",
+        "libintl"
+      ],
+      "requested": true,
+      "license": [
+        "spdx:GPL-3.0-or-later"
+      ],
+      "base": "findutils"
+    },
+    {
+      "repo": "msys",
+      "name": "gcc-libs",
+      "version": "15.3.0-1",
+      "file": "gcc-libs-15.3.0-1-x86_64.pkg.tar.zst",
+      "sha256": "0d99a122c453c05ae21ba3dcea910f2e0d93d38ae067c677a112a315b0f3cec5",
+      "size": 1082211,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "spdx:GPL-3.0-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND GCC-exception-3.1 AND GFDL-1.3-or-later"
+      ],
+      "base": "gcc"
+    },
+    {
+      "repo": "msys",
+      "name": "gmp",
+      "version": "6.3.0-2",
+      "file": "gmp-6.3.0-2-x86_64.pkg.tar.zst",
+      "sha256": "f84536138e618d47a1df2da83916cfebbd449f159ffad52f994a71060a41cf34",
+      "size": 396914,
+      "depends": [],
+      "requested": false,
+      "license": [
+        "LGPL3"
+      ],
+      "base": "gmp"
+    },
+    {
+      "repo": "msys",
+      "name": "libiconv",
+      "version": "1.19-1",
+      "file": "libiconv-1.19-1-x86_64.pkg.tar.zst",
+      "sha256": "0fa55ea2a6ccf97cf8c58b24b2615815e15e16e6e4e888091c263c2c83c5313d",
+      "size": 718353,
+      "depends": [
+        "gcc-libs"
+      ],
+      "requested": false,
+      "license": [
+        "LGPL"
+      ],
+      "base": "libiconv"
+    },
+    {
+      "repo": "msys",
+      "name": "libintl",
+      "version": "0.22.5-1",
+      "file": "libintl-0.22.5-1-x86_64.pkg.tar.zst",
+      "sha256": "336d66b9d95cf9c1804958f8e260762a3e83bf158ed5981f783bc772a31073cf",
+      "size": 50537,
+      "depends": [
+        "gcc-libs",
+        "libiconv"
+      ],
+      "requested": false,
+      "license": [
+        "GPL"
+      ],
+      "base": "gettext"
+    },
+    {
+      "repo": "msys",
+      "name": "make",
+      "version": "4.4.1-3",
+      "file": "make-4.4.1-3-x86_64.pkg.tar.zst",
+      "sha256": "af0bdba17f06fe037f0194069adaa31a8fe45f1a11381501896aea1fae37bd5d",
+      "size": 514683,
+      "depends": [
+        "bash",
+        "libintl"
+      ],
+      "requested": true,
+      "license": [
+        "GPL3"
+      ],
+      "base": "make"
+    },
+    {
+      "repo": "msys",
+      "name": "msys2-runtime",
+      "version": "3.6.10-6",
+      "file": "msys2-runtime-3.6.10-6-x86_64.pkg.tar.zst",
+      "sha256": "b2db5bae3826f15cacb536f4c7c6c7e31d3fabec00aac8f127473aba7e994d22",
+      "size": 2064972,
+      "depends": [],
+      "requested": true,
+      "license": [
+        "spdx:GPL-3.0-or-later"
+      ],
+      "base": "msys2-runtime"
+    }
+  ],
+  "pypi": [
+    {
+      "name": "cocotb",
+      "version": "2.1.0",
+      "file": "cocotb-2.1.0.tar.gz",
+      "url": "https://files.pythonhosted.org/packages/fa/78/10b7acfaeb41741286d34df039c8ff53850601ee4daa6cf58983887e65e3/cocotb-2.1.0.tar.gz",
+      "sha256": "db9761f947dedf0f264dc1e7ef632e0f0b1d0eab26a4e6bbd4ca97ee46cb6da4"
+    },
+    {
+      "name": "find_libpython",
+      "version": "0.5.1",
+      "file": "find_libpython-0.5.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/34/1f/1d6079f4f0540aaa368aa20d89d98eda42f081c397a822c547340e32d1e3/find_libpython-0.5.1-py3-none-any.whl",
+      "sha256": "723a8cfe6fed255a1f58b53c62ed556fb340ec0d456e9863ebc01a5cc047607d"
+    },
+    {
+      "name": "pytest",
+      "version": "9.1.1",
+      "file": "pytest-9.1.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl",
+      "sha256": "37a86b45efb9a47a61a36449063e8e18d0cab3161329fc099eb21783169c4f0c"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "file": "colorama-0.4.6-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.0",
+      "file": "iniconfig-2.3.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl",
+      "sha256": "f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "file": "packaging-26.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.6.0",
+      "file": "pluggy-1.6.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl",
+      "sha256": "e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746"
+    },
+    {
+      "name": "pygments",
+      "version": "2.21.0",
+      "file": "pygments-2.21.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+    },
+    {
+      "name": "setuptools",
+      "version": "83.0.0",
+      "file": "setuptools-83.0.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/5d/40/e1e72872c6354b306daef1703549e8e83b4d43cfea356311bf722a043752/setuptools-83.0.0-py3-none-any.whl",
+      "sha256": "29b23c360f22f414dc7336bb39178cc7bcbf6021ed2733cde173f09dba19abb3"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0",
+      "file": "wheel-0.48.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/2e/29/69cfbb602cd91690c55d38ba9fe53e6a7e76a6fa647bf38f19c138d25449/wheel-0.48.0-py3-none-any.whl",
+      "sha256": "3217dcc807155e45db462d7ef2431f5ddda0d7273b700d05a67b271ceb1287ab"
+    },
+    {
+      "name": "setuptools-git-versioning",
+      "version": "3.1.0",
+      "file": "setuptools_git_versioning-3.1.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/e3/5a/df537a48d60fcb23c2e76bf0192a1d812f6f540e6cae698e402a3bbc27f8/setuptools_git_versioning-3.1.0-py3-none-any.whl",
+      "sha256": "3a68f3fd58a2a5e86b0792435cfa9d8e569ab60ee5e4c29228c09da9b637bf18"
+    }
+  ]
+}
