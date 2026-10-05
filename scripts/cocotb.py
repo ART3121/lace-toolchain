@@ -91,7 +91,9 @@ RUNNER_PATCHES = [
         # comando, e um -LDFLAGS com espaços se parte: cada opção vai num
         # -LDFLAGS próprio. Sem -Wl,-rpath (não existe em PE, e o verilator
         # escapa as vírgulas). A VPI estática não carrega as dependências:
-        # o executável liga também as DLLs do cocotb. libstdc++ e libgcc
+        # o executável liga também a DLL do cocotb (libgpi; no 2.1 o gpilog e
+        # o cocotbutils, que a AURORA ligava no 2.0, estão dentro dela; o
+        # pacote não traz mais libgpilog nem libcocotbutils). libstdc++ e libgcc
         # estáticas porque o modelo e as DLLs do cocotb não casam os símbolos
         # da libstdc++ de outra forma.
         "ligar a VPI estática",
@@ -101,8 +103,6 @@ RUNNER_PATCHES = [
         '''                "-LDFLAGS", f"-L{cocotb_tools.config.libs_dir}",
                 "-LDFLAGS", "-lcocotbvpi_verilator",
                 "-LDFLAGS", "-lgpi",
-                "-LDFLAGS", "-lgpilog",
-                "-LDFLAGS", "-lcocotbutils",
                 "-LDFLAGS", "-static-libstdc++",
                 "-LDFLAGS", "-static-libgcc",
 ''',
