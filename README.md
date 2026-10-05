@@ -136,26 +136,26 @@ da `libgpi`. A AURORA ligava a libstdc++ estática, no gcc 15; no gcc 16.2 a
 AURORA, e roda o Verilator com as opções de aviso do Lace (`-Wno-fatal`,
 `-Wno-TIMESCALEMOD`).
 
-## Ainda não testado
+## Como foi testado
 
-Os scripts que rodam fora do Windows foram testados: o lock resolve 51
-pacotes (137 MiB), o assemble monta, o trim corta 313 MiB e o package gera um
-zip de 187 MiB, sem o cocotb, sem arquivo que não seja de algum pacote. O
-`cocotb.py` e o `smoke.py` nunca rodaram. O primeiro build no Windows decide:
+O CI no `windows-latest` (2026-10-05) monta, compila o cocotb, enxuga e roda
+os quatro fluxos do smoke: Icarus, Verilator, cocotb com Icarus e cocotb
+com Verilator, todos com o gcc 16.2, o Python 3.14 e o cocotb 2.1.0 do lock,
+o pip do ensurepip sem internet e depois do trim. Chegar lá pediu:
 
-- **gcc 16.2.** A AURORA travou o gcc em 15.1 porque o 16.1.0-5 (MINGW64)
-  trazia uma libstdc++ com que a VPI do cocotb não ligava. O lock usa o
-  16.2.0-4 do UCRT64, sem teste. Se a ligação falhar, trave uma versão 15 do
-  `gcc` no `packages.txt`.
-- **Python 3.14 com cocotb 2.1.0.** O cocotb 2.1.0 declara suporte ao 3.14 e
-  publica wheels para ele; o problema da AURORA com o 3.14 foi no 2.0.1.
-- **O runner chamando o Verilator pelo Perl.** A AURORA chamava o script
-  direto.
-- **O pip do ensurepip do bundle** compilando o cocotb sem internet, só com
-  os arquivos do lock.
-- **O trim.** Ele corta mais do que o da AURORA (por exemplo, as bibliotecas
-  estáticas e os cabeçalhos de openssl, sqlite e ncurses, que só entram pelas
-  DLLs). Se um fluxo quebrar só depois do trim, o corte é o suspeito.
+- o nome da VPI do Icarus perguntado ao próprio cocotb (no Windows não é
+  `libcocotbvpi_icarus.vpl`);
+- o runner ligando só a `libgpi` (no 2.1 o `gpilog` e o `cocotbutils` estão
+  dentro dela) e a libstdc++ dinâmica;
+- o `verilated.mk` corrigido (o `-export_dynamic` e o `-Os` sem o
+  `-fdeclone-ctor-dtor`, acima). O problema do gcc 16 que fez a AURORA travar
+  o gcc 15 é o segundo: com ele resolvido, o gcc fica no 16.2;
+- o smoke com o caminho longo da pasta temporária e com as opções de aviso
+  do Lace no Verilator.
+
+O que o smoke não cobre: projetos com espaço ou `~` no caminho (o script do
+Verilator troca o `~` por `\~`), e o `bash` da camada MSYS avisa
+`could not find /tmp` (o Lace cria a pasta `tmp/` antes de rodar o Verilator).
 
 Uma diferença conhecida em relação a uma instalação do pacman: o script de
 pós-instalação do Perl, que troca `@PERL_RELOCATE@` pelo caminho da
