@@ -23,6 +23,7 @@ Grava <saída>/../cocotb-files.json: os arquivos que o cocotb pôs no bundle.
 import argparse
 import json
 import shutil
+import subprocess
 import tarfile
 from pathlib import Path
 
@@ -233,10 +234,24 @@ def main():
     )
     shutil.copy2(archive, libs / archive.name)
 
-    for wanted in ("libcocotbvpi_icarus.vpl", "libcocotbvpi_verilator.a"):
-        if not (libs / wanted).is_file():
-            raise SystemExit(f"falta {wanted} em {libs}")
-    say("VPIs: libcocotbvpi_icarus.vpl, libcocotbvpi_verilator.a")
+    # A VPI do Icarus tem o nome que o cocotb dá a ela no Windows (o build
+    # com o Python do MSYS2 não segue o do Linux): quem diz é o próprio
+    # cocotb, pelo caminho que o runner passa ao vvp.
+    found = subprocess.run(
+        [python, "-m", "cocotb_tools.config", "--lib-name-path", "vpi", "icarus"],
+        env=env,
+        capture_output=True,
+        text=True,
+    )
+    icarus = Path(found.stdout.strip()) if found.returncode == 0 else None
+    print(f"  cocotb/libs: {', '.join(sorted(p.name for p in libs.iterdir()))}")
+    if icarus is None or not icarus.is_file():
+        raise SystemExit(
+            f"a VPI do Icarus não está onde o cocotb a procura ({found.stdout.strip() or found.stderr.strip()})"
+        )
+    if not (libs / archive.name).is_file():
+        raise SystemExit(f"falta {archive.name} em {libs}")
+    say(f"VPIs: {icarus.name}, {archive.name}")
 
     added = sorted(snapshot(bundle) - before)
     listing = bundle.parent / "cocotb-files.json"
