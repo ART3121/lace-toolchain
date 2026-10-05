@@ -112,10 +112,18 @@ bundle executa; ele chama o `verilator_bin.exe` ao lado. O `--build` chama o
 `sh` de lá e compila com o `g++` do UCRT64. O `PATH` precisa ter
 `ucrt64/bin` e `usr/bin`.
 
-O `verilated.mk` do pacote do Verilator sai corrigido (`FILE_PATCHES` em
-`scripts/assemble.py`): o configure do MSYS2 aceitou o `-Wl,-export_dynamic`
-do macOS, que o ld do MinGW lê como `-e xport_dynamic`, o ponto de entrada
-do executável.
+O `verilated.mk` do pacote do Verilator sai corrigido em dois pontos
+(`FILE_PATCHES` em `scripts/assemble.py`):
+
+- o configure do MSYS2 aceitou o `-Wl,-export_dynamic` do macOS, que o ld do
+  MinGW lê como `-e xport_dynamic`, o ponto de entrada do executável;
+- o `-Os` padrão (`OPT_FAST`, `OPT_GLOBAL`) vai com `-fno-declone-ctor-dtor`.
+  O `-Os` liga o `-fdeclone-ctor-dtor`, e o g++ 16.2 passa a chamar os
+  construtores na forma C4, que a libstdc++ dele não exporta (só C1 e C2):
+  sem isso, nem um programa de quatro linhas que move um `std::string` liga.
+  Foi reproduzido no Wine com o g++ do bundle; com `-O2`, `-O0` ou
+  `-Os -fno-declone-ctor-dtor`, liga e roda. Deve ser o que a AURORA viu no
+  gcc 16.1 e contornou travando o gcc 15.
 
 O cocotb roda pelo `ucrt64/bin/python.exe`. O runner foi corrigido em três
 pontos (`RUNNER_PATCHES` em `scripts/cocotb.py`): chama o Verilator pelo

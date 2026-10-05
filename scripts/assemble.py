@@ -44,6 +44,24 @@ FILE_PATCHES = [
         "CFG_LDFLAGS_DYNAMIC = -Wl,-export_dynamic\n",
         "CFG_LDFLAGS_DYNAMIC =\n",
     ),
+    # O -Os liga o -fdeclone-ctor-dtor, e o g++ 16.2 do UCRT64 passa a chamar
+    # os construtores na forma C4 (`...C4EOS4_`), que a libstdc++ dele não
+    # exporta (só C1 e C2): um programa que move um std::string não liga.
+    # Reproduzido no Wine com 4 linhas; com -O2, -O0 ou -Os
+    # -fno-declone-ctor-dtor liga e roda. O Verilator compila o runtime
+    # (verilated.cpp) e o modelo com -Os quando ninguém passa outro -O.
+    (
+        "verilated.mk: -Os sem o -fdeclone-ctor-dtor (OPT_FAST)",
+        "ucrt64/share/verilator/include/verilated.mk",
+        "OPT_FAST = -Os\n",
+        "OPT_FAST = -Os -fno-declone-ctor-dtor\n",
+    ),
+    (
+        "verilated.mk: -Os sem o -fdeclone-ctor-dtor (OPT_GLOBAL)",
+        "ucrt64/share/verilator/include/verilated.mk",
+        "OPT_GLOBAL = -Os\n",
+        "OPT_GLOBAL = -Os -fno-declone-ctor-dtor\n",
+    ),
 ]
 
 
