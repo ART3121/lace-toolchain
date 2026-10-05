@@ -93,9 +93,10 @@ RUNNER_PATCHES = [
         # escapa as vírgulas). A VPI estática não carrega as dependências:
         # o executável liga também a DLL do cocotb (libgpi; no 2.1 o gpilog e
         # o cocotbutils, que a AURORA ligava no 2.0, estão dentro dela; o
-        # pacote não traz mais libgpilog nem libcocotbutils). libstdc++ e libgcc
-        # estáticas porque o modelo e as DLLs do cocotb não casam os símbolos
-        # da libstdc++ de outra forma.
+        # pacote não traz mais libgpilog nem libcocotbutils). A libstdc++ fica
+        # dinâmica, a mesma libstdc++-6.dll da libgpi: com o gcc 16.2, a
+        # libstdc++.a não tem o construtor de movimento do std::string que o
+        # verilated.o usa (a AURORA, no gcc 15, ligava estática).
         "ligar a VPI estática",
         '''                "-LDFLAGS",
                 f"-Wl,-rpath,{cocotb_tools.config.libs_dir} -L{cocotb_tools.config.libs_dir} -lcocotbvpi_verilator",
@@ -103,8 +104,6 @@ RUNNER_PATCHES = [
         '''                "-LDFLAGS", f"-L{cocotb_tools.config.libs_dir}",
                 "-LDFLAGS", "-lcocotbvpi_verilator",
                 "-LDFLAGS", "-lgpi",
-                "-LDFLAGS", "-static-libstdc++",
-                "-LDFLAGS", "-static-libgcc",
 ''',
     ),
 ]

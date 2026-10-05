@@ -112,11 +112,21 @@ bundle executa; ele chama o `verilator_bin.exe` ao lado. O `--build` chama o
 `sh` de lá e compila com o `g++` do UCRT64. O `PATH` precisa ter
 `ucrt64/bin` e `usr/bin`.
 
+O `verilated.mk` do pacote do Verilator sai corrigido (`FILE_PATCHES` em
+`scripts/assemble.py`): o configure do MSYS2 aceitou o `-Wl,-export_dynamic`
+do macOS, que o ld do MinGW lê como `-e xport_dynamic`, o ponto de entrada
+do executável.
+
 O cocotb roda pelo `ucrt64/bin/python.exe`. O runner foi corrigido em três
 pontos (`RUNNER_PATCHES` em `scripts/cocotb.py`): chama o Verilator pelo
 Perl, passa cada opção de ligação num `-LDFLAGS` próprio e liga a VPI
-estática com as DLLs do cocotb. O smoke define `PYTHONHOME` como
-`ucrt64`, como o da AURORA.
+estática com a DLL do cocotb (a `libgpi`; no cocotb 2.1 o `gpilog` e o
+`cocotbutils` estão dentro dela) e com a `libstdc++-6.dll` dinâmica, a mesma
+da `libgpi`. A AURORA ligava a libstdc++ estática, no gcc 15; no gcc 16.2 a
+`libstdc++.a` não tem o construtor de movimento do `std::string` que o
+`verilated.o` usa. O smoke define `PYTHONHOME` como `ucrt64`, como o da
+AURORA, e roda o Verilator com as opções de aviso do Lace (`-Wno-fatal`,
+`-Wno-TIMESCALEMOD`).
 
 ## Ainda não testado
 

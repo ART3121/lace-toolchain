@@ -10,6 +10,10 @@ do MSYS2, nessa ordem; o SHA-256 é o mesmo em todos.
 
 Grava também <saída>/../packages-files.json: os arquivos de cada pacote, que
 o scripts/package.py usa para a lista final. Roda em qualquer sistema.
+
+Depois de extrair, corrige o que os pacotes trazem errado para o Windows
+(`FILE_PATCHES`). Cada correção tem que casar exatamente uma vez: um pacote
+novo que mude o trecho para o build, em vez de sair um bundle quebrado.
 """
 
 import argparse
@@ -26,6 +30,32 @@ from common import (
     package_sources,
     say,
 )
+
+
+# (o que, arquivo no bundle, trecho, troca)
+FILE_PATCHES = [
+    (
+        # O configure do Verilator do MSYS2 aceitou o -Wl,-export_dynamic do
+        # macOS: o ld do MinGW o lê como -e xport_dynamic (o ponto de entrada
+        # do executável) e só avisa, e o modelo sai com a entrada errada. No
+        # Windows não há o que exportar: a VPI é estática.
+        "verilated.mk sem o -export_dynamic do macOS",
+        "ucrt64/share/verilator/include/verilated.mk",
+        "CFG_LDFLAGS_DYNAMIC = -Wl,-export_dynamic\n",
+        "CFG_LDFLAGS_DYNAMIC =\n",
+    ),
+]
+
+
+def apply_patches(out: Path) -> None:
+    for what, rel, old, new in FILE_PATCHES:
+        path = out / rel
+        text = path.read_text(encoding="utf-8")
+        count = text.count(old)
+        if count != 1:
+            raise SystemExit(f"{rel}: o trecho para {what} aparece {count} vezes (esperado: 1)")
+        path.write_text(text.replace(old, new), encoding="utf-8", newline="")
+        print(f"  {rel}: {what}", flush=True)
 
 
 def main():
@@ -49,6 +79,9 @@ def main():
         print(f"  {entry['name']} {entry['version']}: {len(files[entry['name']])} arquivos", flush=True)
         if has_install_script(path):
             installs.append(entry["name"])
+
+    say("corrigindo os pacotes")
+    apply_patches(out)
 
     listing = out.parent / "packages-files.json"
     listing.write_text(json.dumps(files, indent=1) + "\n", encoding="utf-8")

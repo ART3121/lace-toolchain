@@ -77,6 +77,10 @@ def main():
             bin_dir / "perl.exe",
             bin_dir / "verilator",
             "--binary",
+            # As opções de aviso do Lace (simulate.rs): sem elas, um módulo
+            # sem `timescale ao lado de um que tem para o build.
+            "-Wno-fatal",
+            "-Wno-TIMESCALEMOD",
             "--top-module",
             "dff_tb",
             "-Mdir",
