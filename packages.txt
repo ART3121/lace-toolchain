@@ -24,6 +24,10 @@ ignore msys perl
 
 # O compilador que o Verilator usa na máquina do usuário para compilar o modelo.
 ucrt64 gcc
+# O verilated.mk liga todo modelo com -latomic, e o libatomic.dll.a do gcc
+# aponta para a libatomic-1.dll. Desde o gcc 16.2.0-6 a DLL é dependência
+# opcional do gcc (antes vinha pelo cc-libs).
+ucrt64 libatomic
 
 # O Python do cocotb, que também roda o testbench.
 ucrt64 python
