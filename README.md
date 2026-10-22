@@ -153,6 +153,15 @@ o pip do ensurepip sem internet e depois do trim. Chegar lá pediu:
 - o smoke com o caminho longo da pasta temporária e com as opções de aviso
   do Lace no Verilator.
 
+O `ucrt64-v2` (2026-10-22) refez o lock com as mesmas versões de Icarus,
+Verilator, Perl, Python e cocotb, e revisões do gcc 16.2 (16.2.0-6), do
+binutils, do mingw-w64, do expat, do sqlite e do `msys2-runtime`. No gcc
+16.2.0-6 a `libatomic-1.dll` virou dependência opcional, e o `cc-libs`
+deixou de puxar a `libatomic`, a `libquadmath` e (pelo `gcc-libs`) a
+`libgomp`. O `packages.txt` pede a `libatomic` de volta: o `verilated.mk`
+liga todo modelo com `-latomic`, e o `libatomic.dll.a` do gcc aponta para a
+DLL. Os quatro fluxos passaram no Windows antes da release.
+
 O que o smoke não cobre: projetos com espaço ou `~` no caminho (o script do
 Verilator troca o `~` por `\~`), e o `bash` da camada MSYS avisa
 `could not find /tmp` (o Lace cria a pasta `tmp/` antes de rodar o Verilator).
